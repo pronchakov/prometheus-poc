@@ -1,0 +1,17 @@
+version: "3.3"
+
+services:
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.31.1
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus:/etc/prometheus
+
+  metrics-app:
+    container_name: metrics-app
+    build:
+      context: .
+    ports:
+      - 8080:8080
